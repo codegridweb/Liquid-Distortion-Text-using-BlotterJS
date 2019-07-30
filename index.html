@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03  - Liquid text using BlotterJS</title>
+    <script src="https://cdn.rawgit.com/bradley/Blotter/master/build/blotter.min.js"></script>
+    <script src="https://rawgit.com/bradley/Blotter/master/build/materials/liquidDistortMaterial.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="main"></div>
+
+<script>
+
+    container = document.getElementById("main");
+
+    const text = new Blotter.Text("Liquid", {
+        family: "serif",
+        size: 120,
+        fill: "#fff"
+    });
+
+    let material = new Blotter.LiquidDistortMaterial();
+
+    material.uniforms.uSpeed.value = 0.3;
+    material.uniforms.uVolatility.value = 0.1;
+    material.uniforms.uSeed.value = 0.1;
+
+    let blotter = new Blotter(material, {
+        texts: text
+    });
+
+    let scope = blotter.forText(text);
+
+    scope.appendTo(container);
+
+</script>
+</body>
+</html>
